@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Apache Spark cluster setup and Gestrue recognition using Spark</title>
+		<meta lang="en">
+		<link type="text/css" rel="stylesheet" href="">
+		<style>
+			body{
+					background:;
+				}
+			header {
+					opacity:1;
+					position:absolute;
+					width:100%;
+					height:464px;
+					background-color:transparent;
+					padding-top:1.25%;
+					margin-left:-10px;
+				}
+			.headerBg {
+				position:absolute;
+				background-image:url("./img/headerBg.jpg");
+				background-color:transparent;
+				filter:alpha(opacity=10);
+				height:500px;
+				opaicty:0.1;
+				width:100%;
+				display:inline-block;
+				margin:-0.55% 0% 0% -0.55%;
+				}
+			img {
+					width:100%;
+					height:100%;
+				}
+			ul {
+					list-style-type:none;
+				}
+			.left { 
+					float:left;
+					width:175px;
+				}
+			.right {					
+					width:75px;
+					float:right;
+					margin-right:3%;
+				}
+			.logo{
+					height:;
+					border:0px solid black;
+				}
+				.headerBg ul{
+					display:block;
+					background:#E5E5E5;
+					opacity:0.5;
+					height:128px;
+					}
+				#projectLogo{
+					margin:20% 0% 0% 15%;
+					font-family:"Courier New","Times New Roman";
+					font-size:50px;
+					color:#F0F0FA;
+					}
+					#docsBtn{
+						position:absolute;
+						margin:40% 0% 0% 35%;
+						width:15%;
+						height:65px;
+						background:#84D184;
+						transition:all 0.3s;
+						border-radius:10px;
+						font-size:15px;
+						color:#4d4d4d;
+						}
+						
+					#goToAppBtn{
+						position:absolute;
+						margin:40% 0% 0% 51%;
+						width:15%;
+						height:65px;
+						background:#FF8FA3;
+						transition:all 0.3s;
+						border-radius:10px;
+						font-size:15px;
+						color:#4d4d4d;
+						}
+						
+					#docSection{
+						position:absolute;
+						margin-top:36.5%;
+						width:100%;
+						border-top:2px solid #BFBFBF;
+					}
+					
+					.docsRight{
+						border:2px solid #E5E5E5;
+						float:right;
+						display:inline-block;
+						width:79.5%;
+						}
+					.head{
+						font-size:30px;
+						font-weight:bold;
+						font-family:Times New Roman;
+						color:#4d4d4d;
+						margin:5% 1%;
+						}
+					.subhead{
+						margin:2% 2%;
+						font-size:20px;
+						font-weight:bold;
+						font-family:Times New Roman;
+						color:#4d4d4d;
+						}
+						
+					.content{
+						margin:2% 2%;
+						font-size:14px;
+						font-weight:normal;
+						line-height:2;
+						font-family:Times New Roman;
+						color:#332725;
+						}
+						
+					.subsubhead{
+						margin:2% 5%;
+						font-size:17px;
+						font-weight:bold;
+						font-family:Times New Roman;
+						color:#4d4d4d;
+							}
+					
+					.subcontent{
+						margin:2% 10%;
+						font-size:14px;
+						font-family:Times New Roman;
+						color:#4d4d4d;
+						}
+						
+					.docsLeft{
+						float:left;
+						background:#4D4D4D;
+						color:#E6E6FA;
+						display:inline-block;
+						width:20%;
+						}
+						
+					.docsLeft ul a li {
+						width:100%;
+						height:50px;
+						color:#E6E6FA;
+						transition:all 0.5s;
+						border:1px solid #BFBFBF;
+						border-width:1px 1px 0px 0px;
+						line-height:3;
+						background:#4d4d4d;
+						padding:0px 0px 0px 0px;
+						}
+						
+						
+						.docsLeft ul li ul {
+							margin-left:-10px;
+							}
+							
+						.docsLeft ul a li:hover,.docsLeft ul a:hover{
+							color:#4d4d4d;
+							transition:all 0.5s;
+							background:#E5E5E5;
+							}
+						
+						a {
+							text-decoration:none;
+							}
+						code {
+							padding:5px 10px;
+							border-radius:5px;
+							display:block;
+							margin:10px 0px;
+							}
+					.code {
+							background:#4D4D4D;
+							color:white;
+						}
+					.terminalTitle{
+						color:#90EE90;
+						}
+					.file {
+						padding:5px 10px;
+						background:#E5E5E5;
+						color:#1A1A1A;
+						}
+					.fileName{
+						color:#C82727;
+						display:block;
+						}
+						
+				</style>
+	</head>
+	
+	<body>
+			<div class="headerBg">
+					<ul>
+						<li></li>
+					</ul>
+			</div>
+			<header>
+				<ul id="headerRow1">
+					<li class="logo left">
+						<img src="./img/cseLogo.png" />
+					</li>
+					<li class="logo right">
+						<img src="./img/rguktLogo.png"/> 
+					</li>
+				</ul>
+				<ul id="headerRow2">
+					<li id="projectLogo">
+						Apache Spark cluster setup and Gestrue recognition using Spark
+					</li>
+				</ul>
+			</header>
+			<section id="docSection">
+				<!-- Left menu -->
+				<div class="docsLeft" style="position:relative;display:inline-block;">
+					<ul>
+						<a href="#gettingStarted"><li>1 Gettng started</li></a>
+						<a href="#appInterface"><li>2 Environment setup</li></a>
+						<li>
+						<ul>
+							<a href="#install"><li>2.0.0 Essentials</li></a>
+							<a href="#toDo"><li>2.0.1 Things to do</li></a>
+							<a href="#javaSetup"><li>2.1 Java setup</li></a>
+							<a href="#sshSetup"><li>2.2 SSH setup</li></a>
+							<a href="#hadoopSetup"><li>2.3 Hadoop setup</li></a>
+							<a href="#sparkSetup"><li>2.4 Spark setup</li></a>
+							<a href="#rSetup"><li>2.5 R setup</li></a>
+							<a href="#dependencies"><li>2.6 Other dependencies</li></a>
+							<!--<a href="#pythonSetup"><li>2.3 Python setup</li></a>
+							<a href="#openCVSetup"><li>2.4 openCV setup</li></a>
+								-->
+						</ul>
+						</li>
+						<a href="#startCluster"><li>3 Starting cluster</li></a>
+						<ul>
+							<a href="startHDFS"><li>3.1 Start HDFS</li></a>
+							<a href="startSpark"><li>3.2 Start Spark</li></a>
+							<a href="sparklyr"><li>3.3 Sparklyr</li></a>						
+						</ul>
+						<a href="#example"><li>4 Example</li></a>
+						
+						
+					</ul>
+				</div>
+				<!-- Documentation on right side -->
+				<div class="docsRight">
+					<ul>
+						<li class="head" id="gettingStarted">1. Getting Started</li>
+						<li>					
+							<ul>
+								<li class="subhead">Apache Spark</li>
+								<li class="content">Apache Spark is an open-source cluster-computing framework.Spark provides an interface 
+								for programming entire clusters with implicit data parallelism and fault tolerance.Apache Spark is a fast,
+								 in-memory data processing engine with elegant and expressive development APIs to allow data workers to efficiently
+								  execute streaming, machine learning or SQL workloads that require fast iterative access to datasets.Spark is now 
+								  one of many data access engines that work with YARN in HDP.Spark can be as much as 10 times faster than 
+								  MapReduce for batch processing and up to 100 times faster for in-memory analytics.
+								</li>
+							</ul>
+							<ul>
+								<li class="subhead">Apache Hadoop</li>
+								<li class="content">The Apache Hadoop software library is a framework that allows for the distributed 
+								processing of large data sets across clusters of computers using simple programming models. It is 
+								designed to scale up from single servers to thousands of machines, each offering local computation and storage.
+								MapReduce is a framework using which we can write applications to process huge amounts of data, in parallel,
+								on large clusters of commodity hardware in a reliable manner.
+								</li>
+							</ul>
+							<ul>
+								<li class="subhead">R</li>
+								<li class="content">R is an open source programming language and software environment for statistical
+								 computing and graphics. R uses command-line scripting, which is ideal for storing numerous series of
+								 complex data-analysis and recycling that analysis' on similar sets of data."Sparklyr" is a package that
+								 provides an interface between R and Apache Spark.
+								</li>
+							</ul>
+							<ul>
+								<li class="subhead"></li>
+								<li>
+																																		
+								</li>
+							</ul>
+							<ul>
+								<li class="subhead"></li>
+								<li></li>
+							</ul>
+						</li>
+						
+						
+						<li class="head" id="appInterface">2 Environment setup</li>
+						<li>
+							<ul>
+								<li class="subhead" id="install">2.0.0 Essentials and dependencies</li>
+								<li class="content">
+									
+									<ul>
+										<li>2.1 JAVA</li>
+										<li>2.2 openSSH</li>
+										<li>2.5 Hadoop</li>
+										<li>2.6 Spark</li>
+										<li>2.7 R</li>
+										<li>2.8 others</li>
+										<!--<li>2.3 python</li>
+										<li>2.4 openCV</li>
+										-->
+									</ul>
+								</li>
+								<br/>
+								<li class="subhead" id="toDo">2.0.1 Things to do</li>
+								<li class="content">
+									For smooth installation of cluster try to follow the below guidelines
+									<ol>
+										<li>User name of all nodes in cluster are same. This documentation uses <strong>salt</strong> user 
+										to explain things.</li>
+										<li>Install all system updates before starting the cluster setup.</li>
+										<li>This documentation explains cluster with following nodes
+											<ul>
+												<li>&nbsp;&nbsp;&nbsp;<strong>ip</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;----<strong>username(nodeType)</strong></li>
+												<li>10.0.0.222-----salt(master)</li>
+												<li>10.0.0.10 -----salt(slave1)</li>
+												<li>10.0.0.11 -----salt(slave2)</li>
+											</ul>
+										</li>
+									</ol>
+								</li>
+								<br/>
+								<li class="subhead" id="javaSetup">2.1 JAVA</li>
+								<li class="content">
+									Java is a computer programming language. It enables programmers to write computer instructions using 
+									English-based commands instead of having to write in numeric codes. It's known as a high-level language 
+									because it can be read and written easily by humans.Like English, Java has a set of rules that determine 
+									how the instructions are written. These rules are known as its syntax. Once a program has been written,
+									 the high-level instructions are translated into numeric codes that computers can understand and execute.
+									 <code class="code"><span class="terminalTitle">master@salt:~$</span> sudo apt-get update<br>
+									 <span class="terminalTitle">master@salt:~$</span> java -version
+									 </code>
+									 If there is java installed  in your system, this will return the current version installed. Else...
+									<code class="code"><span class="terminalTitle">master@salt:~$</span> java -version<br>
+											The program 'java' can be found in the    following packages:<br>
+											* default-jre<br>
+											* gcj-4.9-jre-headless<br>
+											* gcj-5-jre-headless<br>
+											* openjdk-7-jre-headless<br>
+											* gcj-4.8-jre-headless<br>
+											* openjdk-6-jre-headless<br>
+											* openjdk-8-jre-headless<br>
+											Try: sudo apt-get install &lt;selected packages&gt;<br>
+											<span class="terminalTitle">master@salt:~$</span> 
+											</code>
+									Java can be installed using the following commnads.
+									 <code class="code"><span class="terminalTitle">master@salt:~$</span>sudo apt-get install default-jre<br>
+									 <span class="terminalTitle">master@salt:~$</span> sudo apt-get install openjdk-8-jre-headless
+									  <br>#do the same installation on all systems 
+									 </code>
+									<ul>
+										<li class="subsubhead">2.1.1 Set JAVA_HOME variable (all nodes)</li>
+										<li class="subcontent">1. Open <strong>~/.bashrc</strong> file and add the following lines.(.bashrc is an
+										environment file used for a terminal session. It is present is home directory of current user with 
+										hidden property.)</li>
+										<li class="subcontent">
+												<code class="file">
+														<span class="fileName">~/.bashrc</span>
+														.<br>
+														.<br>
+														.<br>
+														export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64<br>
+														export PATH=PATH:$JAVA_HOME/bin:$PATH
+												</code>
+												<code class="code">
+													<span class="terminalTitle">master@salt:~$</span> source ~/.bashrc<br>
+													#loads the updated file and applies changes made.<br>
+													#Only need to dot this once after editing .bashrc file<br>
+												</code>
+										</li>
+										<li class="subcontent">
+											Check if java is installed correctly and the variable is JAVA_HOME is set properly by following commands
+											<code class="code"><span class="terminalTitle">master@salt:~$</span> java -version<br>
+											openjdk version "1.8.0_162"<br>
+											OpenJDK Runtime Environment (build 1.8.0_162-8u162-b12-0ubuntu0.16.04.2-b12)<br>
+											OpenJDK 64-Bit Server VM (build 25.162-b12, mixed mode)<br>
+
+											</code>
+											Returns the current version of java installed in system.
+											<code class="code"><span class="terminalTitle">master@salt:~$</span> echo $JAVA_HOME<br>
+											/usr/lib/jvm/java-8-openjdk-amd64
+											</code>
+											Return the value of JAVA_HOME, i.e., path to java directory(commonly it is /usr/lib/jvm/...)
+										</li>
+									</ul>
+
+								</li>
+								<br/>
+								<li class="subhead" id="sshSetup">2.2 openSSH</li>
+								<li class="content">
+									The OpenSSH suite provides secure remote access and file transfer. 
+									Since its initial release, it has grown to become the most widely used implementation 
+									of the SSH protocol. During the first ten years of its existence, ssh has largely replaced
+									older corresponding unencrypted tools and protocols. The OpenSSH client is included by default
+									in most operating system distributions, including OS X, Linux, BSD and Solaris. Any day you use
+									the Internet, you are using and relying on dozens if not hundreds of machines operated and maintained
+									using OpenSSH. In the project openSSH is required to grant authentication to master on all slave nodes
+									 in cluster. Hadoop uses this authentication to start hdfs services on all connected nodes automatically.
+									 <br>Install openssh using the following command
+									 <code class="code"><span class="terminalTitle">master@salt:~$</span> sudo apt-get install openssh-server
+									 <br>#do the same installation on all systems </code> 
+									<ul>
+										<li class="subsubhead">2.2.1 Generate and share authentication keys</li>
+										<li class="subcontent">We can give access rights of system1 to system2 which are connected through some
+										network using ssh. For this we need to have some common keys shared between the nodes to remember
+										the list of authentic users later.<br>
+										First generate the keys on every system using the following command.
+										<code class="code"><span class="terminalTitle">master@salt:~$</span>  ssh-keygen -t rsa <br>
+										<span class="terminalTitle">master@salt:~$ </span>ssh-copy-id -i ~/.ssh/id_rsa.pub salt@10.0.0.222<br>
+										<span class="terminalTitle">master@salt:~$ </span>ssh-copy-id -i ~/.ssh/id_rsa.pub salt@10.0.0.10<br>
+										<span class="terminalTitle">master@salt:~$ </span>ssh-copy-id -i ~/.ssh/id_rsa.pub salt@10.0.0.11 <br>
+										<span class="terminalTitle">master@salt:~$ </span>chmod 0600 ~/.ssh/authorized_keys<br>
+										#do the same on all systems
+										</code>
+										To check if ssh is configured properly on all nodes, try to login to any remote system using ssh command.
+										
+										<code class="code">
+											<span class="terminalTitle">master@salt:~$</span>  ssh salt@10.0.0.10 <br>
+											Welcome to Ubuntu 16.04.4 LTS (GNU/Linux 4.4.0-121-generic x86_64)<br>
+											 * Documentation:  https://help.ubuntu.com<br>
+											 * Management:     https://landscape.canonical.com<br>
+											 * Support:        https://ubuntu.com/advantage<br>
+
+											30 packages can be updated.<br>
+											14 updates are security updates.<br>
+
+											Last login: Sun Apr 22 05:06:51 2018 from 10.0.0.222<br>
+											<span class="terminalTitle">slave1@salt:~$</span><br>
+											#this is terminal session of salt@10.0.0.10 node
+										</code>
+										</li>
+									</ul>
+								</li>
+								<!--<br/>
+								<li class="subhead" id="pythonSetup">2.3 Python</li>
+								<li class="content">
+									Python is an interpreted, object-oriented, high-level programming language with 
+									dynamic semantics. Its high-level built in data structures, combined with dynamic 
+									typing and dynamic binding, make it very attractive for Rapid Application Development,
+									 as well as for use as a scripting or glue language to connect existing components
+									  together. Python's simple, easy to learn syntax emphasizes readability and therefore 
+									  reduces the cost of program maintenance. Python supports modules and packages, which 
+									  encourages program modularity and code reuse. The Python interpreter and the extensive
+									   standard library are available in source or binary form without charge for all major 
+									   platforms, and can be freely distributed.<br>
+									   Install python using the commands below
+									   <code class="code">#python is mostly installed in all ubuntu releases. No need to install again if you already had it<br>
+										   <span class="terminalTitle">master@salt:~$</span> cd /opt<br>
+										   <span class="terminalTitle">master@salt:/opt$</span> wget https://www.python.org/ftp/python/2.7.12/Python-2.7.12.tgz <br>
+										   <span class="terminalTitle">master@salt:/opt$</span> tar -xvf Python-2.7.12.tgz<br>
+										   <span class="terminalTitle">master@salt:/opt$</span> ./configure<br>
+										   <span class="terminalTitle">master@salt:/opt$</span> make<br>
+										   <span class="terminalTitle">master@salt:/opt$</span> make install<br>
+									   </code> 									
+								</li>
+								
+								<br/>
+								<li class="subhead" id="openCVSetup">2.4 openCV</li>
+								<li class="content">
+									OpenCV is an open source computer vision library originally developed by Intel.
+									 It is free for commercial and research use under a BSD license. The library is cross-platform,
+									  and runs on Mac OS X, Windows and Linux. It focuses mainly towards real-time image processing,
+									   as such, if it finds Intel's Integrated Performance Primitives on the system, it will use these 
+									   commercial optimized routines to accelerate itself.<br>
+									   Install openCV using pip as follows
+									   <code class="code"><span class="terminalTitle">master@salt:~$</span> pip install opencv-python 
+									   </code>
+								</li>
+								<br>-->
+								<li class="subhead" id="hadoopSetup">2.3 Hadoop</li>
+								<li class="content">
+									<ul>
+										<li class="subsubhead" id="etcFile">2.3.1 Hosts configuration</li>
+										<li class="subcontent">In order to identify and start slave nodes and other services
+										hadoop uses configuration files to identify the nodes and their ips. Edit the <strong>
+										/etc/hosts</strong> file and add the appropriate ips in your cluster.
+										<code class="file">
+											<span class="fileName">/etc/hosts</span>
+											127.0.0.1	localhost<br>
+											10.0.0.222	salt<br>
+											10.0.0.10	salt<br>
+											10.0.0.11	salt<br>
+											#edit the <i>hosts</i> file in master system only. No need to do on all nodes.
+										</code>										
+										</li>
+									</ul>
+									<ul>
+										<li class="subsubhead" id="etcFile">2.3.2 Download hadoop</li>
+										<li class="subcontent">Download and install hadoop by following the steps below<br>
+											<code class="code">
+												<span class="terminalTitle">master@salt:~$</span> mkdir /opt/hadoop  
+												<span class="terminalTitle">master@salt:~$</span> cd /opt/ <br/>
+												<span class="terminalTitle">master@salt:~$</span> wget http://apache.mesi.com.ar/hadoop/common/hadoop-1.2.1/hadoop-1.2.0.tar.gz <br/> 
+												<span class="terminalTitle">master@salt:~$</span> tar -xzf hadoop-1.2.0.tar.gz <br/>
+												<span class="terminalTitle">master@salt:~$</span> mv hadoop-1.2.0 hadoop <br/>
+												<span class="terminalTitle">master@salt:~$</span> chown -R salt /opt/hadoop 		#granting previliges <br/>							
+											</code>
+										</li>
+										<li class="subsubhead" id="createDirs">2.3.3 Create directories</li>
+										<li class="subcontent">
+											Use the following commands to create directories for hadoop to use
+											<code class="code">
+												<span class="terminalTitle">master@salt:~$</span> sudo mkdir /var/log/hadoop  <br>
+												<span class="terminalTitle">master@salt:~$</span> sudo chown salt:salt /var/log/hadoop/ <br/>
+												<span class="terminalTitle">master@salt:~$</span> sudo mkdir /usr/local/hadoopstorage <br/> 
+												<span class="terminalTitle">master@salt:~$</span> sudo chown salt:salt /usr/local/hadoopstorage/ <br/>
+												<span class="terminalTitle">master@salt:~$</span> chmod -R 755 /usr/local /hadoopstorage<br/>
+												<span class="terminalTitle">master@salt:~$</span> mkdir /usr/local/hadoopstorage/datanode <br/>
+												<span class="terminalTitle">master@salt:~$</span> mkdir /usr/local/hadoopstorage/namenode<br/>
+																			
+											</code> 
+										</li>
+										<li class="subsubhead" id="hadoopEnv">2.3.4 Configure Hadoop environment</li>
+										<li class="subcontent">
+											Edit the <strong>/opt/hadoop/etc/hadoop/hadoop-env.sh</strong> file to configure settings for hadoop.
+											<code class="file">
+												<span class="fileName">hadoop-env.sh</span>
+												.<br>
+												.<br>
+												.<br>
+												#add this at the end of file<br>
+												export JAVA_HOME=/usr/java/jdk1.7.0_03/ #java home<br>
+												export HADOOP_HEAPSIZE=2000 #hadoop heap size<br>
+												export HADOOP_LOG_DIR=/var/log/hadoop #hadoop log directory<br>
+											</code> 
+										</li>
+										<li class="subsubhead" id="hadoopMaster">2.3.5 Set Hadoop master</li>
+										<li class="subcontent">
+											Edit the <strong>/opt/hadoop/etc/hadoop/master.sh</strong> file to configure master node for hadoop.
+											<code class="file">
+												<span class="fileName">master</span>
+													10.0.0.222
+											</code> 
+										</li>
+										<li class="subsubhead" id="hadoopSlave">2.3.6 Set Hadoop slaves</li>
+										<li class="subcontent">
+											Edit the <strong>/opt/hadoop/etc/hadoop/slaves.sh</strong> file to configure slaves for hadoop.
+											<code class="file">
+												<span class="fileName">slaves</span>
+												10.0.0.10<br>
+												10.0.0.11
+											</code> 
+										</li>
+										<li class="subsubhead" id="hadoop">2.3.7 Configure Hdfs environment</li>
+										<li class="subcontent">
+											Edit the <strong>/opt/hadoop/etc/hadoop/core-site.xml</strong> file to configure settings for hadoop.
+											<code class="file">
+												<span class="fileName">core-site.xml</span>
+<xmp><?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+	<property>
+		<name>hadoop.tmp.dir</name>
+		<value>/usr/local/hadoopstorage/tmp</value>
+		<description>The name of the default file system.</description>
+	</property>
+	<property>
+		<name>dfs.name.dir</name>
+		<value>/usr/local/hadoopstorage/namenode</value>
+		<final>true</final>
+		</property>
+	<property>
+		<name>dfs.data.dir</name>
+		<value>/usr/local/hadoopstorage/datanode</value>
+		<final>true</final>
+	</property>
+	<property>
+		<name>fs.default.name</name>
+		<value>hdfs://10.0.0.222:50070</value>
+		<description>The name of the default file system.</description>
+	</property>
+</configuration></xmp>
+											</code> 
+										</li>
+										<li class="subsubhead" id="hdfsSite">2.3.8 Hdfs site configuration</li>
+										<li class="subcontent">
+											Edit the <strong>/opt/hadoop/etc/hadoop/hdfs-site.xml</strong> file to configure  HDFS.
+											<code class="file">
+												<span class="fileName">hdfs-site.xml</span>
+<xmp><?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+<property>
+      <name>dfs.replication</name>
+      <value>2</value>
+   </property>
+</configuration></xmp>
+											</code> 
+										</li>
+										<li class="subsubhead" id="hdfsSite">2.3.9 Set HADOOP_HOME variable</li>
+										<li class="subcontent">
+											Edit the <strong>/home/salt/.bashrc</strong> file to set HADOOP_HOME variable.
+											<code class="file">
+												<span class="fileName">~/.bashrc</span>
+												.<br>
+												.<br>
+												.<br>
+												#add this at the end of .bashrc file<br>
+												export HADOOP_HOME=/opt/hadoop<br>
+												export PATH=$HADOOP_HOME/bin:$PATH
+
+											</code> 
+											<code class="code">
+												<span class="terminalTitle">master@salt:~$</span> source .bashrc<br>
+												#this loads the changes done to .bashrc file and applies to system environment. 
+											</code>
+										</li>
+																				
+										<li class="subsubhead" id="hdfsSite">2.3.10 Configure slaves</li>
+										<li class="subcontent">
+											Follow the below guidelines to configure all slaves in network
+											<ol>
+												<li>Make all necessary changes for hadoop in master node. Edit configuration files, set environments, etc.,</li>
+												<li>Copy the complete hadoop folder from master to all slaves. Place the folder in same path as 
+												master node's hadoop path.</li>
+												<li>Configure ssh authentication in all slave nodes.Every slave should be directly accesible by
+												master node without password promt.</li>
+												<li>Before copying make sure every dependency file is set and all settings are configured .</li>
+												<li>Set other environment variables and update files in all slave nodes.</li>
+												<li>Create all directories of hadoop in slave node as specified in <a href="#createDirs">section 2.5.3</a></li>
+											</ol>
+										</li>
+										
+										<li class="subsubhead" id="hdfsSite">2.3.11 Format hadoop file system</li>
+										<li class="subcontent">
+											Follow the below guidelines to format hadoop file system and make it ready to use.
+											<code class="code">
+												<span class="terminalTitle">master@salt:~$</span> cd $HADOOP_HOME/bin <br>
+												<span class="terminalTitle">master@salt:/opt/hadoop/bin$</span> ./hadoop namenode -format<br>
+												 #if name node is sucessfully formatted, the process exits with status 0.<br>
+												 #else read log files and debug any errors/warnings given. 
+											</code>
+											Formatting namenode <span style="color:red">removes all contents</span> of hadoop filesystem. Backup everyting 
+											from hdfs before formatting it.
+										</li>
+																			
+									</ul>
+								</li>
+								<br>
+								<li class="subhead" id="sparkSetup">2.4 Spark</li>
+								<li class="content">
+									Apache Spark is a lightning-fast cluster computing technology, designed for fast computation
+									 released in 2009. It has become one of the key big data distributed processing frameworks in the world.
+									  Spark can be deployed in a variety of ways, provides native bindings for the Java, 
+									  Scala, Python, and R programming languages, and supports SQL, streaming data, machine 
+									  learning, and graph processing.
+									<ul>
+										<li class="subsubhead">2.4.1 Download spark</li>
+										<li class="subcontent">
+											Download Apache Spark from official repository using the following commands
+											<code class="code">
+												<span class="terminalTitle">master@salt:~$</span>  cd /opt<br>
+												<span class="terminalTitle">master@salt:~$</span>  wget https://www.apache.org/dyn/closer.lua/spark/spark-2.3.0/spark-2.3.0-bin-hadoop2.7.tgz<br>
+											</code>
+											Extract the downloaded file in desired location. Assume it is extracted in <strong>/opt</strong> folder
+											<code class="code">
+												<span class="terminalTitle">master@salt:~$</span> tar -xvf spark-2.3.0-bin-hadoop2.7.tgz <br>
+											</code>
+											</li>
+										<li class="subsubhead">2.4.2 Spark setup</li>
+										<li class="subcontent">
+											Configure and set spark environment variables in <strong>.bashrc</strong> file of home directory
+											<code class="file">
+												<span class="fileName">~/.bashrc</span>
+												.<br>
+												.<br>
+												.<br>
+												export SPARK_HOME=/home/salt/R/spark<br>
+												export PATH=$SPARK_HOME/bin:$PATH
+											</code>
+											<code class="code">
+													<span class="terminalTitle">master@salt:~$</span> source .bashrc <br>
+											</code>
+											Edit the spark configurations file in spark directory
+											<code class="file">
+												<span class="fileName">spark/conf/spark-env.sh</span>
+												.<br>
+												.<br>
+												SPARK_MASTER_IP=10.0.0.222<br>
+												.<br>
+												.<br>
+											</code>
+											</li>
+									</ul>
+								</li>
+								<br>
+								<li class="subhead" id="rSetup">2.5 R</li>
+								<li class="content">
+									R is a programming language and free software environment for statistical
+									 computing and graphics that is supported by the R Foundation for Statistical 
+									 Computing.The R language is widely used among statisticians and 
+									 data miners for developing statistical software and data analysis. Polls, 
+									 surveys of data miners, and studies of scholarly literature databases show that
+									  R's popularity has increased substantially in recent years.
+								<ul>
+										<li class="subsubhead">2.5.1 Install R</li>
+										<li class="subcontent">
+											Download R from official repository using the following commands
+											<code class="code">
+												<span class="terminalTitle">master@salt:~$</span> sudo add-apt-repository 'deb [arch=amd64,i386]https://cran.rstudio.com/bin/linux/ubuntu xenial/'<br>
+												<span class="terminalTitle">master@salt:~$</span> sudo apt-get install r-base<br>
+																								
+											</code>
+											Download and install <strong>R-studio</strong>(optional) for ease of use.
+										</li>
+										<li class="subsubhead">2.5.2 Install Sparklyr</li>
+										<li class="subcontent">
+											Download and install sparklyr package in R using following command
+											<code class="code">
+												<span class="terminalTitle">&gt;</span> install.packages("sparklyr") 												
+											</code>
+											Download and install <strong>R-studio</strong>(optional) for ease of use.
+										</li>
+									
+										<li class="subsubhead">2.5.3 Install other packages</li>
+										<li class="subcontent">
+											Download and install R packages
+											<code class="code">
+												<span class="terminalTitle">&gt;</span> install.packages(e1071)<br>
+												<span class="terminalTitle">&gt;</span> install.packages(dplyr)<br>
+												<span class="terminalTitle">&gt;</span> install.packages(amap)<br>
+												<span class="terminalTitle">&gt;</span> install.packages(ggplot2)<br>
+												<span class="terminalTitle">&gt;</span> install.packages(Rcurl)
+											</code>
+										</li>									
+									</ul>
+								</li>
+								
+								<br/>
+								<li class="subhead" id="dependencies">2.6 Other dependencies</li>
+								<li class="content">
+									There could be some missing dependencies while installing above
+									packages and softwares. Install them carefully by reading errors 
+									prompted during installations. Some common dependencies are as follows
+									<code class="code">
+										<span class="terminalTitle">master@salt:~$</span>  sudo apt-get -y install libcurl14-gnutls-dev<br>
+										<span class="terminalTitle">master@salt:~$</span>  sudo apt-get -y install libssl-dev<br>
+										<span class="terminalTitle">master@salt:~$</span>  sudo apt-get -y install libxml12-dev<br>
+									</code
+								</li>
+							</li>
+						<br/>
+								
+						</ul>
+					</li>
+					<li class="head" id="startCluster">3 Starting Cluster</li>
+						<li>
+							<ul>
+								<li class="subhead" id="startHDFS">3.1 Starting hdfs</li>
+								<li class="content">
+									Hadoop cluster can be started simply by following command.
+									<code class="code">
+										<span class="terminalTitle">master@salt:~$</span>  cd $HADOOP_HOME<br>
+										<span class="terminalTitle">master@salt:/opt/hadoop$</span>  ./sbin/start-dfs.sh<br>
+										#use jps command to see list of active services<br>
+										<span class="terminalTitle">master@salt:~$</span> jps<br>
+										JPS<br>
+										NameNode<br>
+										TaskTracker<br>
+										JobTracker
+									</code>
+									<li class="subsubhead" id="">3.1.1 Viewing cluster info</li>
+									<li class="subcontent">
+										Hadoop cluster's information can be viewed by the web interface it provides. Use the following ip(default)
+										to see hadoop cluster summary. Port of this is what you've specified in hadoop configuration file <a href=""><strong>core-site.xml</strong></a><br>
+										<br>
+										<img class="screenShot" title="hadoop webview" alt="webView Hdfs" src="img/hdfs1.png"/>
+										<img class="screenShot" title="hadoop webview" alt="webView Hdfs" src="img/hdfs2.png"/>
+										<img class="screenShot" title="hadoop webview" alt="webView Hdfs" src="img/hdfs3.png"/>
+										<img class="screenShot" title="hadoop webview" alt="webView Hdfs" src="img/hdfs5.png"/>
+										
+									</li>									
+								</li>
+								<li class="subhead" id="startSpark">3.2 Starting spark</li>
+								<li class="content">
+									Unlike hadoop which automatically starts services of master as well as slaves, Spark won't do that.
+									Every spark worker node needs to be manually connected to spark master from that system.
+									<li class="subsubhead">3.2.1 Start spark master</li>
+									<li class="subcontent">
+										Start the spark master service by using the following command
+										<code class="code">
+											<span class="terminalTitle">master@salt:~$</span>  cd $SPARK_HOME<br>
+											<span class="terminalTitle">master@salt:/opt/spark$</span>  ./sbin/start-master.sh<br>
+										</code>										
+									</li>
+									<li class="subsubhead">3.2.2 Start spark slave</li>
+									<li class="subcontent">
+										Connect the slave services from each slave by using the following commands.<br>
+										From slave1(10.0.0.10) use the following commands
+										<code class="code">
+											<span class="terminalTitle">slave1@salt:~$</span>  cd $SPARK_HOME<br>
+											<span class="terminalTitle">slave1@salt:/opt/spark$</span>  ./sbin/start-slave.sh spark://10.0.0.222:7077<br>
+										</code>										
+										<br><br>And from slave2(10.0.0.11) to do the same thing
+										<br>
+										<br>
+										<code class="code">
+											<span class="terminalTitle">slave2@salt:~$</span>  cd $SPARK_HOME<br>
+											<span class="terminalTitle">slave2@salt:/opt/spark$</span>  ./sbin/start-slave.sh spark://10.0.0.222:7077<br>
+										</code>										
+										
+									For all remaining slaves do the same.
+									</li>
+									<li class="subsubhead">3.2.3 spark webview</li>
+									<li class="subcontent">
+										Spark too had a web interface to have a look at summary of spark cluster.
+										It also gives us the applications currently running on our spark cluster and the processors available.
+										Spark slave information can also be seen from webview.<br><br>
+										<img class="screenShot" title="spark webview" alt="webView saprk" src="img/spark.jpeg"/>
+										<br><br><br>And the list of job statistics are viewed as given below<br><br><br><br>
+										<img class="screenShot" title="spark webview" alt="webView spark" src="img/spark1.png"/>
+										
+									</li>
+								</li>
+								<li class="subhead" id="sparklyr">3.3 Using sparklyr</li>
+								<li class="content">
+									Sparklyr is an R package that lets you analyze data in Spark while using familiar tools in R.
+									 Sparklyr supports a complete backend for dplyr, a popular tool for working with data frame objects
+									  both in memory and out of memory. You can use dplyr to translate R code into Spark SQL. 
+									  Sparklyr also supports MLlib so you can run classifiers, regressions, clustering, decision trees, 
+									  and many more machine learning algorithms on your distributed data in Spark. With sparklyr you can
+									   analyze large amounts of data that would not traditionally fit into R memory. Then you can
+									    collect results from Spark into R for further visualization and documentation. Sparklyr is also
+									     extensible. You can create R packages that depend on sparklyr to call the full Spark API.
+									      One example of an extension is H2O rsparkling, an R package that works with H2O's machine
+									       learning algorithm. With sparklyr and rsparkling you have access to all the tools in H2O for 
+									       analysis with R and Spark.
+										<li class="subsubhead">3.3.1 Spark connection from R</li>
+										<li class="subcontent">
+											To create a spark connection from R-interface use the following lines of code
+											<code class="code">
+												<span style="color:#FD7171">R-console</span><br>
+												<span class="terminalTitle">&gt;</span> library(sparklyr)<br>
+												<span class="terminalTitle">&gt;</span> library(dplyr)<br>
+												<span class="terminalTitle">&gt;</span> SPARK_HOME &lt;- "/opt/spark/"<br>
+												<span class="terminalTitle">&gt;</span> sc &lt;- spark_connect(master = "spark://10.0.0.222:7077", spark_home = SPARK_HOME)<br>
+											</code>										
+											
+										</li>
+										<li class="subsubhead">3.3.2 Insert data into Spark cluster</li>
+										<li class="subcontent">
+												Spark stores data in the form of tables and before copying to spark cluster type cast whatever data
+												you copy to data.frame format.
+											<code class="code">
+												<span style="color:#FD7171">R-console</span><br>
+												<span class="terminalTitle">&gt;</span> spark_table &lt;- copy_to(sc,iris)<br>
+											</code>										
+										
+										</li>
+										<li class="subsubhead">3.3.2 Spark mllib</li>
+										<li class="subcontent">
+										Sparklyr provides bindings to Spark's distributed machine learning library.
+										 In particular, sparklyr allows you to access the machine learning routines provided by 
+										 the spark.ml package. Together with sparklyr's dplyr interface, you can easily create and tune
+										  machine learning workflows on Spark, orchestrated entirely within R. Sparklyr provides three
+										   families of functions that you can use with Spark machine learning:<br>
+											1.Machine learning algorithms for analyzing data (ml_*)<br>
+											2.Feature transformers for manipulating individual features (ft_*)<br>
+											3.Functions for manipulating Spark DataFrames (sdf_*)<br>
+
+										</li>
+								</li>
+							</ul>
+							<li class="head" id="example">4. Expample</li>
+								<li class="subhead">Svm in R</li>
+									<li class="content">
+									<code class="code">
+												<span style="color:#FD7171">R-console</span><br>
+
+												<br/><span class="terminalTitle">&gt;</span>	library(e1071)
+												<br/><span class="terminalTitle">&gt;</span>	library(ggplot2)
+												<br/><span class="terminalTitle">&gt;</span>	library(amap)
+
+												<br/><br/><br/><span class="terminalTitle">&gt;</span>	setwd("/home/salt/Desktop/projFiles/cohn-kanade-images croppedLabelled");
+													
+												<br/><br/><br/><span class="terminalTitle">&gt;</span>	# read data from a csv file
+												<br/><span class="terminalTitle">&gt;</span>	d&lt;-read.csv("testFinal.csv",sep='\t',header=FALSE,row.names = NULL,stringsAsFactors = TRUE);
+												<br/><span class="terminalTitle">&gt;</span>	d2&lt;-d[,c(-1,-1026)]
+
+												<br/><br/><br/><span class="terminalTitle">&gt;</span>	#apply principle component analysis on given data
+												<br/><span class="terminalTitle">&gt;</span>	model&lt;-prcomp(d2)
+
+												<br/><br/><br/><span class="terminalTitle">&gt;</span>	nSC1&lt;-40
+												<br/><span class="terminalTitle">&gt;</span>	#visiualize classification by PCs which are accessed by model$x[,i] and labels from d[,1] 
+												<br/><span class="terminalTitle">&gt;</span>	features1&lt;-model$x[,1:nSC1];
+
+
+												<br/><span class="terminalTitle">&gt;</span>	#append labels at the end of feature matrix
+												<br/><span class="terminalTitle">&gt;</span>	features1&lt;-cbind(features1,d[,1]);
+
+												<br/><br/><br/><span class="terminalTitle">&gt;</span>	set.seed(2222);
+
+												<br/><span class="terminalTitle">&gt;</span>	#generate random indexes for training and test data set generation
+												<br/><span class="terminalTitle">&gt;</span>	indexes&lt;-sample(1:nrow(features1),0.8*nrow(features1));
+												<br/><span class="terminalTitle">&gt;</span>	testData&lt;-features1[indexes,];
+												<br/><span class="terminalTitle">&gt;</span>	trainData&lt;-features1[-indexes,];
+
+
+												<br/><br/><br/><span class="terminalTitle">&gt;</span>	exprName&lt;-matrix(testData[,(nSC1+1)],ncol=1);
+												<br/><span class="terminalTitle">&gt;</span>	exprValues&lt;-matrix(testData[,-(nSC1+1)],ncol=nSC1);
+
+												<br/><br/><br/><span class="terminalTitle">&gt;</span>	#apply support vector machine on test data to calssify data
+												<br/><span class="terminalTitle">&gt;</span>	svmModel&lt;-svm(exprName~exprValues);
+
+												<br/><span class="terminalTitle">&gt;</span>	#print (summary(svmModel))
+
+												<br/><br/><br/><span class="terminalTitle">&gt;</span>	#use model to verify on test data
+												<br/><span class="terminalTitle">&gt;</span>	predicted&lt;-predict(svmModel,testData[,-(nSC1+1)])
+
+												<br/><br/><br/><span class="terminalTitle">&gt;</span>	#compare results
+												<br/><span class="terminalTitle">&gt;</span>	result&lt;-cbind(round(predicted),testData[,(nSC1+1)]);
+												<br/><span class="terminalTitle">&gt;</span>	print (result)
+												<br/><span class="terminalTitle">&gt;</span>	r&lt;-matrix(unlist(result),ncol=2)
+
+												<br/><span class="terminalTitle">&gt;</span>	smlr&lt;-1
+												<br/><span class="terminalTitle">&gt;</span>	for (i in 1:nrow(r)){
+												<br/><span class="terminalTitle">+</span>	if(r[i,1]==r[i,2])
+												<br/><span class="terminalTitle">+</span>	smlr&lt;-smlr+1
+												<br/><span class="terminalTitle">&gt;</span>	}
+
+												<br/><span class="terminalTitle">&gt;</span>	prnt&lt;-(smlr*100/nrow(r))
+												<br/><span class="terminalTitle">&gt;</span>	paste0(prnt,"% accurate!!!")
+												<br/><span class="terminalTitle">&gt;</span>	set.seed(Sys.time());
+									
+									</code>
+									</li>
+								</li>
+								<br><br><br>
+								<li class="subhead">SVM using sparklyr's mllib</li>
+								<li class="content">
+									<code class="code">
+												<span style="color:#FD7171">R-console</span><br>
+
+												<br/><span class="terminalTitle">&gt;</span>	library(e1071)
+												<br/><span class="terminalTitle">&gt;</span>	library(dplyr)
+												<br/><span class="terminalTitle">&gt;</span>	library(sparklyr)
+												<br/><span class="terminalTitle">&gt;</span>	library(data.table)
+
+												<br/><br/><span class="terminalTitle">&gt;</span>	setwd("/home/salt/Desktop/projFiles/cohn-kanade-images croppedLabelled");
+																									
+												<br/><br/><span class="terminalTitle">&gt;</span>	#set SPARK_HOME and establish a spark connection
+												<br/><span class="terminalTitle">&gt;</span>	SPARK_HOME="/home/salt/R/spark";
+												<br/><span class="terminalTitle">&gt;</span>	spark_disconnect_all();
+												<br/><span class="terminalTitle">&gt;</span>	sc&lt;-spark_connect(master="spark://10.0.0.222:7077",spark_home=SPARK_HOME);	
+												
+												<br/><br/><br/><span class="terminalTitle">&gt;</span>	# read data from a csv file in hadoop cluster
+												<br/><span class="terminalTitle">&gt;</span>	myData&lt;-fread("/opt/hadoop/bin/hadoop fs -text hdfs://10.0.0.222:54310/test/data90.csv",sep = '\t',header = FALSE,stringsAsFactors = TRUE)
+											
+												<br/><br/><br/><span class="terminalTitle">&gt;</span>	d300395&lt;-myData[,301:395];
+												<br/><span class="terminalTitle">&gt;</span>	d300395&lt;-matrix(unlist(d300395),ncol=95,byrow = TRUE)
+												<br/><span class="terminalTitle">&gt;</span>	d300395t&lt;-t(d300395)
+												<br/><span class="terminalTitle">&gt;</span>	d300395t&lt;-as.data.frame(d300395t);
+
+												<br/><br/><br/><span class="terminalTitle">&gt;</span>	#copy data to spark cluster and create a spark_table
+												<br/><span class="terminalTitle">&gt;</span>	face_data&lt;-copy_to(sc,d300395t);
+												
+												
+												<br/><br/><br/><span class="terminalTitle">&gt;</span>	#apply principle component analysis on data using spark ml_pca function
+												<br/><span class="terminalTitle">&gt;</span>	d_pca2&lt;-face_data %>%
+												<br/><span class="terminalTitle">+</span>	  <span style="color:#FD7171;">ml_pca();</span>
+
+
+												<br/><br/><br/><span class="terminalTitle">&gt;</span>	nPC&lt;-30 #number of features to consider
+												<br/><span class="terminalTitle">&gt;</span>	#select features after applying pca on data
+												<br/><span class="terminalTitle">&gt;</span>	features2&lt;-d_pca2$components[,1:nPC];
+
+												<br/><span class="terminalTitle">&gt;</span>	#append labels to features
+												<br/><span class="terminalTitle">&gt;</span>	features2&lt;-cbind(features2,myData[,1]);
+
+
+												<br/><br/><br/><span class="terminalTitle">&gt;</span>	set.seed(1234);
+
+												<br/><span class="terminalTitle">&gt;</span>	#generate random indexes for training and test data set generation
+												<br/><span class="terminalTitle">&gt;</span>	indexes2&lt;-sample(1:nrow(features2),0.8*nrow(features2));
+												<br/><span class="terminalTitle">&gt;</span>	testData2&lt;-features2[indexes2,];
+												<br/><span class="terminalTitle">&gt;</span>	trainData2&lt;-features2[-indexes2,];
+
+
+												<br/><br/><br/><span class="terminalTitle">&gt;</span>	exprName2&lt;-matrix(testData2[,nPC+1],ncol=1);
+												<br/><span class="terminalTitle">&gt;</span>	exprValues2&lt;-matrix(testData2[,-(nPC+1)],ncol=nPC);# features is of dimension 90 x 11 where 11>labels 
+
+												<br/><br/><br/><span class="terminalTitle">&gt;</span>	#generate model using priciple components with svm
+												<br/><span class="terminalTitle">&gt;</span>	svmModel2&lt;-svm(exprName2~exprValues2);
+
+												<br/><br/><br/><span class="terminalTitle">&gt;</span>	#test model with sample data
+												<br/><span class="terminalTitle">&gt;</span>	predicted2&lt;-predict(svmModel2,testData2[,-(nPC+1)])
+
+												<br/><br/><br/><span class="terminalTitle">&gt;</span>	#compare results after prediction by model
+												<br/><span class="terminalTitle">&gt;</span>	result2&lt;-cbind(round(predicted2),testData2[,(nPC+1)]);
+												<br/><span class="terminalTitle">&gt;</span>	print (result)
+												<br/><span class="terminalTitle">&gt;</span>	r2&lt;-matrix(unlist(result2),ncol=2)
+
+												<br/><br/><br/><span class="terminalTitle">&gt;</span>	smlr2&lt;-1
+												<br/><span class="terminalTitle">&gt;</span>	for (i2 in 1:nrow(r2)){
+												<br/><span class="terminalTitle">+</span>	&nbsp;&nbsp;if(r2[i2,1]==r2[i2,2])
+												<br/><span class="terminalTitle">+</span>	&nbsp;&nbsp;&nbsp;&nbsp; smlr2&lt;-smlr2+1
+												<br/><span class="terminalTitle">+</span>	}
+
+												<br/><span class="terminalTitle">&gt;</span>	prnt2&lt;-(smlr2*100/nrow(r2))
+												<br/><span class="terminalTitle">&gt;</span>	paste0(prnt2,"% accurate!!!-----using spark cluster")
+												<br/><span class="terminalTitle">&gt;</span>	#close spark connection
+												<br/><br/><br/><span class="terminalTitle">&gt;</span>	spark_disconnect(sc);
+												<br/><br/><br/><span class="terminalTitle">&gt;</span>	set.seed(Sys.time())
+									
+									</code>
+									</li>
+								
+								</li>
+								
+						</li>
+					</ul>
+					
+				</div>
+			</section>
+	</body>
+</html>

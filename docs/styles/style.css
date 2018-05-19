@@ -1,0 +1,402 @@
+/*							global styling								*/
+
+body{
+
+}
+
+img {
+max-width:100%;
+height:100%;
+}
+header {
+border:0px solid #4D4D4D;
+display:block;
+position:fixed;
+height:90px;
+width:100%;
+z-index:1000;
+background:;
+left:0;
+box-shadow:0px 2px 2px #E6E6FA;
+}
+header ul {
+border-bottom:0px solid #4D4D4D;
+}
+header ul li {
+display:inline-block;
+width:32%;
+height:60px;
+border:0px solid green;
+opacity:0.5;
+transition:all 0.6s;
+box-shadow:0px 5px 2px #8C8CEE;
+color:#4d4d4d;
+}
+header ul li:hover {
+opacity:1;
+transition:all 0.3s;
+}
+#tabInput {
+background-image:url("../img/input.png");
+background-repeat:no-repeat;
+background-position:center center;
+background-size:15%;
+line-height:4;
+padding-left:10px;
+color:#B93E3E;
+opacity:1;
+}
+#tabStat {
+background-image:
+url("../img/plot.png");
+background-repeat:no-repeat;
+background-position:center center;
+background-size:15%;
+line-height:4;
+padding-left:10px;
+}
+#tabExport {
+background-image:url("../img/export2.png");
+background-repeat:no-repeat;
+background-position:center center;
+background-size:15%;
+line-height:4;
+padding-left:10px;
+}
+
+
+
+
+section {
+width:100%;
+display:block;
+border:0px solid red;
+}
+
+section div {
+display:block;
+width:100%;
+border:0px solid green;
+}
+ul{
+list-style-type:none;
+}
+
+/*							Input tab									*/
+#divInput div{
+display:inline-block;
+}
+#leftInput{
+border:0px solid black;
+width:35%;
+height:750px;
+position:absolute;
+}
+#rightInput{
+position:absolute;
+width:60%;
+height:700px;
+border:0px solid black;
+}
+#leftInput fieldset,#rightInput fieldset {
+height:750px;
+margin-bottom:5%;
+}
+.inputClass {
+margin-left:-5%;
+}
+ul li{
+display:inline-block;
+}
+input,select {
+width:80%;
+height:50px;
+display:inine-block;
+margin:10px;
+border:0px solid black;
+text-align:center;
+background:#9CCEFF;
+border-radius:10px;
+-webkit-appearance: none;
+-moz-appearance: none;
+}
+select {
+background:url(arr.png) no-repeat right #9cceff;
+}
+option {
+	padding:15px 0px;
+	transition:all 0.3s;
+	opacity:0.8;
+	color:#4D4D4D;
+}
+
+option:hover {
+	opacity:1;
+	transition:all 0.5s;
+}
+#dataFieldContainer{
+width:75%;
+height:200px;
+border:0px solid black;
+}
+textarea{
+position:relative;
+display:inline-block;
+width:90%;
+height:650px;
+padding-top:3%;
+text-align:center;
+line-height:2;
+border:4px dashed #BFBFBF;
+box-shadow:1px 0px 10px #4D4D4D;
+margin-left:15%;
+}
+
+.row12{
+width:50%;
+height:50px;
+display:block;
+}
+.row12 li{
+width:40%;
+line-height:3;
+}
+.row13{
+width:70%;
+height:70px;
+border:0px solid black;
+}
+.row13 li{
+width:49%;
+}
+.row14{
+display:none;
+}
+#iitbAbsolute {
+display:block;
+}
+
+
+
+.labels,.values {
+width:90px;
+height:35px;
+}
+p{
+color:red;
+display:inline;
+}
+
+
+#resetZoom{
+float:right;
+margin-right:50px;
+}
+
+#myChart {
+max-width:90%;
+width:90%;
+margin-left:5%;
+}
+#pieStats{
+width:95%;
+height:464px;
+border:0px solid black;
+display:block;
+padding:15px 10px;
+contain: content;
+max-height:;
+max-width:95%;
+}
+#pie1{
+border:0px solid red;
+width:45%;
+height:435px;
+float:left;
+max-height:420px;
+max-width:48%;
+background:white;
+opacity:0.7;
+}
+#pie2{
+border:0px solid red;
+width:45%;
+height:430px;
+float:right;
+max-height:420px;
+max-width:48%;
+background:white;
+opacity:0.7;
+transition:all 0.5s ease;
+}
+#pie1:hover, #pie2:hover{
+transition:all 0.8s ease;
+opacity:1;
+}
+
+
+table {
+display:block;
+border:0px solid black;
+}
+th{
+display:inline-block;
+padding:20px 5px;
+width:120px;
+border:1px solid #4d4d4d;
+background:#4D4D4D;
+font-size:12px;
+color:white;
+}
+td{
+display:inline-block;
+padding:15px 5px;
+width:120px;
+border:1px solid #4d4d4d;
+font-size:14px;
+background:#Ffffff;
+color:#4d4d4d;
+transition:all 0.3s ease;
+
+}
+td:hover{
+transition:all 0.5s ease;
+background:#f2f2f2;
+}
+.avgTable td{
+border:1px;
+}
+
+
+#confirmBtn {
+	width:20%;
+	padding:15px 0px;
+	background:#EB5E76;
+	box-shadow:1px 0px 1px #E5E5E5;
+	color:#FFFFFF;
+	transition:all 0.3s;
+	border-radius:10px;
+}
+#confirmBtn:hover{
+	background:#6DE86D;
+	transition:all 0.6s;
+	
+}
+.plotControls {
+	display:block;
+	width:100%;
+	margin-left:;
+	background:;
+	border:0px solid green;
+}
+.plotControls td {
+padding:0px 0px;
+color:white;
+font-size:15px;
+border:0px;
+opacity:0.6;
+transition:all 0.3s;
+}
+.dataControls{
+}
+
+#lineChartBtn{
+opacity:1;
+}
+.plotControls td:hover{
+opacity:1;
+transition:all 0.5s;
+background:transparent;
+box-shadow:0px 2px 3px #E8E8F6;
+}
+
+.plotControls td input,.plotControls td select{
+	display:inine-block;
+	border:0px solid black;
+	text-align:center;
+	background:#E5E5E5;
+	color:#1A1A1A;
+	margin:0px 10px;
+	border-radius:0px;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+
+
+td.label {
+color:#4d4d4d;
+border:0px;
+text-align:center;
+}
+td.grades {
+padding:0px 0px 0px 0px;
+width:3.7%;
+display:inline-block;
+text-align:right;
+border:0px solid white;
+margin-right:1%;
+}
+input.curVals{
+border-radius:0px;
+width:100%;
+margin:0px 5px 0px 0px;
+border-width:0px;
+border-right:0px solid #BFBFBF;
+background:white;
+box-shadow:none;
+text-align:left;
+}
+.grades:hover{
+background:white;
+}
+input.curVals{
+border-radius:10px;
+-webkit-appearance: none;
+-moz-appearance: number-input;
+}
+.curLabels{
+text-align:right;
+}
+/*
+.plotControls li.label{
+width:5%;
+}
+*/
+#tabStat
+{
+	animation-name:;
+    animation-duration: 0.7s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-play-state: running;
+}
+
+#tabInput
+{
+	animation-name:;
+    animation-duration: 0.7s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-play-state: running;
+}
+
+#tabExport {
+	animation-name:;
+    animation-duration: 0.7s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-play-state: running;
+}
+
+}
+
+
+
+
+
+
+
+
